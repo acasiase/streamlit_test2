@@ -6,7 +6,7 @@ from langchain.chains import ConversationalRetrievalChain
 from langchain.chat_models import ChatOpenAI
 from langchain_community.chat_models import ChatOllama
 
-from langchain.document_loaimders import PyPDFLoader
+from langchain.document_loaders import PyPDFLoader
 from langchain.document_loaders import Docx2txtLoader
 from langchain.document_loaders import UnstructuredPowerPointLoader
 
