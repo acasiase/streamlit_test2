@@ -5,6 +5,7 @@ from loguru import logger
 from langchain.chains import ConversationalRetrievalChain
 from langchain.chat_models import ChatOpenAI
 from langchain_community.chat_models import ChatOllama
+from langchain_community.llms import Ollama
 
 from langchain.document_loaders import PyPDFLoader
 from langchain.document_loaders import Docx2txtLoader
@@ -136,7 +137,7 @@ def get_vectorstore(text_chunks):
     return vectordb
 
 def get_conversation_chain(vetorestore):
-    llm = ChatOllama(model="EEVE-Korean-10.8B:latest", temperature=0)
+    llm = Ollama(model="EEVE-Korean-10.8B:latest", temperature=0)
     conversation_chain = ConversationalRetrievalChain.from_llm(
             llm=llm, 
             chain_type="stuff", 
