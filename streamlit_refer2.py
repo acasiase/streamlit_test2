@@ -136,7 +136,7 @@ def get_vectorstore(text_chunks):
     vectordb = FAISS.from_documents(text_chunks, embeddings)
     return vectordb
 
-def get_conversation_chain(vetorestore,openai_api_key):
+def get_conversation_chain(vetorestore):
     llm = ChatOllama(model="EEVE-Korean-10.8B:latest", temperature=0)
     conversation_chain = ConversationalRetrievalChain.from_llm(
             llm=llm, 
