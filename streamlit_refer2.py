@@ -37,7 +37,7 @@ def main():
         st.session_state.processComplete = None
 
     with st.sidebar:
-        # uploaded_files =  st.file_uploader("Upload your file",type=['pdf','docx'],accept_multiple_files=True)
+        uploaded_files =  st.file_uploader("Upload your file",type=['pdf','docx'],accept_multiple_files=True)
         # openai_api_key = st.text_input("OpenAI API Key", key="chatbot_api_key", type="password")
         process = st.button("Process")
     
@@ -45,8 +45,6 @@ def main():
         # if not openai_api_key:
         #    st.info("Please add your OpenAI API key to continue.")
         #    st.stop()
-        loader = PyPDFLoader("KRCS_22022_01(EMU-320_136량)_사양서_4장.pdf", extract_images=False)
-        uploaded_files = loader.load()
         files_text = get_text(uploaded_files)
         text_chunks = get_text_chunks(files_text)
         vetorestore = get_vectorstore(text_chunks)
@@ -57,7 +55,7 @@ def main():
 
     if 'messages' not in st.session_state:
         st.session_state['messages'] = [{"role": "assistant", 
-                                        "content": "안녕하세요! EMU-320_136량 사양서_4장에 대해 궁금하신 것이 있으면 언제든 물어봐주세요!"}]
+                                        "content": "안녕하세요! 검토파일 업로드 후 process버튼을 누른 후 궁금하신 부분을 물어봐주세요!"}]
 
     for message in st.session_state.messages:
         with st.chat_message(message["role"]):
